@@ -298,7 +298,7 @@ if [ 1 -eq $get_logs ]; then
     mkdir_or_die "${start_dir}"/"${debug_dir}"/files/var/log/.info
     cd "${start_dir}"/"${debug_dir}"/files/var/log
 
-    for var_log_file in messages syslog daemon debug kern.log; do
+    for var_log_file in messages syslog daemon debug kern.log system.log; do
         # Use dump to execute the copy. This will provide a progress dot and
         # capture any error messages.
         if [ -f /etc/$var_log_file ]; then
@@ -320,7 +320,7 @@ if [ 1 -eq $get_cfgs ]; then
     mkdir_or_die "${start_dir}"/"${debug_dir}"/files/etc/.info
     cd "${start_dir}"/"${debug_dir}"/files/etc
 
-    for etc_file in release redhat-release debian_version SuSE-release slackware-version mandrake-release UnitedLinux-release; do
+    for etc_file in hosts release redhat-release debian_version SuSE-release slackware-version mandrake-release UnitedLinux-release; do
         # Use dump to execute the copy. This will provide a progress dot and
         # capture any error messages.
         if [ -f /etc/$etc_file ]; then
