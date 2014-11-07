@@ -249,13 +249,13 @@ if [ 1 -eq $get_syscmds ]; then
     # load them. This is rarely desired and can even cause connectivity
     # problems if, e.g., nf_conntrack gets autoloaded and autoenabled.
     if [ -n "$(command -v lsmod)" ]; then
-        if [ -n "$(lsmod 2>/dev/null | awk /iptable_filter/ '{print $1}')" ]; then
+        if [ -n "$(lsmod 2>/dev/null | awk '/iptable_filter/ {print $1}')" ]; then
             dump iptables_rules iptables -n -L
         else
             dump iptables_rules echo "iptables module not loaded"
         fi
 
-        if [ -n "$(lsmod 2>/dev/null | awk /nf_conntrack/ '{print $1}')" ]; then
+        if [ -n "$(lsmod 2>/dev/null | awk '/nf_conntrack/ {print $1}')" ]; then
             dump iptables_nat iptables -t nat -n -L
         else
             dump iptables_nat echo "nf_conntrack module not loaded"
