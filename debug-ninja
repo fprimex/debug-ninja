@@ -335,7 +335,7 @@ if [ 1 -eq $get_cfgs ]; then
 
     if [ -f /etc/security/limits.conf ]; then
         mkdir_or_die "${start_dir}"/"${debug_dir}"/files/etc/security/.info
-        cd "${start_dir}"/"${debug_dir}"/files/etc/security/.info
+        cd "${start_dir}"/"${debug_dir}"/files/etc/security/
         dump cp_security_limits cp /etc/security/limits.conf .
         if [ 0 -eq $? ]; then
             rm -f cp_security_limits
